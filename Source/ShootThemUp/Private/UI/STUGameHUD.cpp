@@ -1,0 +1,23 @@
+// Shooth Them Up Game, All Rights Reserved.
+
+
+#include "UI/STUGameHUD.h"
+#include "Engine/Canvas.h"
+void ASTUGameHUD::DrawHUD()
+{
+    Super::DrawHUD();
+    DrawCrossHair();
+}
+
+void ASTUGameHUD::DrawCrossHair()
+{
+    const TInterval<float> Center(Canvas->SizeX*0.5, Canvas->SizeY*0.5);
+
+    const float HalfLineSize=10.0f;
+    const float LineThikness = 2.0f;
+    const FLinearColor LineColor= FLinearColor::Green;
+    
+    DrawLine(Center.Min-HalfLineSize, Center.Max, Center.Min+HalfLineSize, Center.Max, LineColor, LineThikness);
+    DrawLine(Center.Min, Center.Max - HalfLineSize, Center.Min, Center.Max+HalfLineSize, LineColor, LineThikness);
+
+}
